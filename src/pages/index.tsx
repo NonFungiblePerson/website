@@ -173,7 +173,7 @@ export default function Index() {
               <chakra.img alt="price constraints" src="/images/prices.png" w="400px" />
             </Box>
             <chakra.p fontSize="14px" mb="20px" whiteSpace="unset" width="60%">
-              For tokens whose tokenID is less than 200, 1MATIC.
+              For tokens whose tokenID is less than 100, 1MATIC.
               <br />
               Next 100 tokens are 5MATIC each.
               <br />
