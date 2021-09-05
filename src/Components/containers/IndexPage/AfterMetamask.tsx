@@ -49,7 +49,7 @@ export const AfterMetamaskContainer = ({ publicAddress, web3 }: Props) => {
 
   useEffect(() => {
     updatePriceAndLatestToken();
-    contract.events.tokenPurchased({}).on('data', async event => {
+    contract.events.tokenPurchased({}).on('data', async (event: any) => {
       updatePriceAndLatestToken();
       console.log(event);
       console.log(event.returnValues.buyer);
