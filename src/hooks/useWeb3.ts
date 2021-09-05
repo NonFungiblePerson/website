@@ -24,8 +24,6 @@ export function useWeb3(
   const [isMetamaskApproved, setIsMetamaskApproved] = useState<boolean>(false);
   const [isMetamaskActivated, setIsMetamaskActivated] = useState<boolean>(false);
   const [publicAddress, setPublicAddress] = useState<string | undefined>();
-  console.log(web3);
-  console.log(isMetamaskApproved);
 
   const requestMetamask = useCallback(
     ({ onEnabled, onFailed }: RequestArgs) => {
@@ -71,13 +69,11 @@ export function useWeb3(
       web3?.eth
         ?.getCoinbase()
         .then(coinbase => {
-          console.log('coinbase', coinbase);
           setPublicAddress(coinbase.toLowerCase());
           setIsMetamaskActivated(true);
         })
         .catch(e => {
           console.error(e);
-          console.log('coinbasefail');
           setPublicAddress(undefined);
           setIsMetamaskActivated(false);
         });
