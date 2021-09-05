@@ -2,7 +2,7 @@ type ChainTypes = 'rinkeby' | 'polygon';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Constants {
-  export const ChainType = 'rinkeby';
+  export const ChainType = 'polygon';
   export const ChainSettings: { [_ in ChainTypes]: any } = {
     polygon: {
       blockExplorerUrls: ['https://polygonscan.com/'],

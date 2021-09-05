@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 
 import { AfterMetamaskContainer } from '../Components/containers/IndexPage/AfterMetamask';
 import { BeforeMetamaskContainer } from '../Components/containers/IndexPage/BeforeMetamask';
+import { ComingSoon } from '../Components/containers/IndexPage/ComingSoon';
 import { useAddChain } from '../hooks/useAddChain';
 import { useNetworkSwitch } from '../hooks/useNetworkSwitch';
 import { useWeb3 } from '../hooks/useWeb3';
@@ -120,9 +121,10 @@ export default function Index() {
           {!isMetamaskApproved && (
             <BeforeMetamaskContainer requestMetamask={requestMetamask} />
           )}
-          {isMetamaskApproved && web3 && publicAddress && (
-            <AfterMetamaskContainer publicAddress={publicAddress} web3={web3} />
-          )}
+          {/*{isMetamaskApproved && web3 && publicAddress && (*/}
+          {/*  <AfterMetamaskContainer publicAddress={publicAddress} web3={web3} />*/}
+          {/*)}*/}
+          {isMetamaskApproved && web3 && publicAddress && <ComingSoon />}
         </chakra.div>
       </chakra.div>
       <chakra.section bg="#eee" padding="32px" w="100%">
