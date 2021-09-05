@@ -2,6 +2,7 @@ type ChainTypes = 'rinkeby' | 'polygon';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Constants {
+  export const ContractAddress = '';
   export const ChainType = 'polygon';
   export const ChainSettings: { [_ in ChainTypes]: any } = {
     polygon: {
