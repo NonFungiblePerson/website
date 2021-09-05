@@ -124,7 +124,9 @@ export default function Index() {
           {/*{isMetamaskApproved && web3 && publicAddress && (*/}
           {/*  <AfterMetamaskContainer publicAddress={publicAddress} web3={web3} />*/}
           {/*)}*/}
-          {isMetamaskApproved && web3 && publicAddress && <ComingSoon />}
+          {isMetamaskApproved && web3 && publicAddress && (
+            <ComingSoon publicAddress={publicAddress} web3={web3} />
+          )}
         </chakra.div>
       </chakra.div>
       <chakra.section bg="#eee" padding="32px" w="100%">
