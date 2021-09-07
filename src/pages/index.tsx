@@ -173,11 +173,15 @@ export default function Index() {
               <chakra.img alt="price constraints" src="/images/prices.png" w="400px" />
             </Box>
             <chakra.p fontSize="14px" mb="20px" whiteSpace="unset" width="60%">
-              For tokens whose tokenID is less than 100, 1MATIC.
+              Tokens #0~#29 are reserved for the community.
               <br />
-              Next 100 tokens are 5MATIC each.
+              Tokens #30~#49 can be minted for free (gas fee only).
               <br />
-              After that, the price goes up by 0.2MATIC for each token.
+              Tokens for #50~#99 are 1MATIC.
+              <br />
+              The next 100 tokens are 5MATIC.
+              <br />
+              After that, the price will increase by 0.2MATIC.
             </chakra.p>
             <Box my="30px">
               <chakra.img alt="price chart" src="/images/chart.svg" width="600px" />

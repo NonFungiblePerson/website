@@ -8,7 +8,10 @@ import ABI from '../../../utils/abi.json';
 import { Constants } from '../../../utils/constants';
 
 import { Gallery } from './Gallery';
+import { MintableComponent } from './MintableComponent';
+import { NotMintableComponent } from './NotMintableComponent';
 import { useCurrentPriceCall } from './hooks/useCurrentPriceCall';
+import { useIsMintable } from './hooks/useIsMintableCall';
 import { useLatestTokenIdCall } from './hooks/useLatestTokenIdCall';
 import { onChangeCurrentPrice, onChangeLatestTokenId } from './stores/actions';
 import { reducer } from './stores/reducer';
@@ -34,6 +37,7 @@ export const AfterMetamaskContainer = ({ publicAddress, web3 }: Props) => {
     publicAddress,
     web3,
   });
+  const { isMintable } = useIsMintable({ contract, publicAddress, web3 });
   const updatePriceAndLatestToken = useCallback(() => {
     currentPriceCall({
       onSuccess(price) {
@@ -64,26 +68,21 @@ export const AfterMetamaskContainer = ({ publicAddress, web3 }: Props) => {
 
   return (
     <chakra.div paddingY="12rem">
-      <VStack alignItems="center" w="100%">
-        <Text color="nfpGreys.400" fontSize="3.2rem" mb="3.2rem">
-          Coming soon
-        </Text>
-        <Text color="nfpGreys.400" fontSize="1.6rem" mb="3.2rem">
-          Minting button,seeing current price, your galleries will be shown here.
-        </Text>
-        <Text color="nfpGreys.400" fontSize="1.6rem" mb="3.2rem">
-          Your Address: {publicAddress}
-        </Text>
-        {state.latestTokenId && <Text>latestTokenId: {state.latestTokenId}</Text>}
-        {state.currentPrice && <Text>currentPrice: {state.currentPrice}</Text>}
-        <Gallery
+      {isMintable ? (
+        <MintableComponent
           contract={contract}
           dispatch={dispatch}
           publicAddress={publicAddress}
           state={state}
           web3={web3}
         />
-      </VStack>
+      ) : (
+        <NotMintableComponent
+          contract={contract}
+          publicAddress={publicAddress}
+          web3={web3}
+        />
+      )}
     </chakra.div>
   );
 };
