@@ -103,6 +103,19 @@
     "inputs": [
       {
         "indexed": false,
+        "internalType": "uint256",
+        "name": "totalTip",
+        "type": "uint256"
+      }
+    ],
+    "name": "tipped",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
         "internalType": "address",
         "name": "buyer",
         "type": "address"
@@ -170,6 +183,19 @@
   {
     "inputs": [],
     "name": "currentPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentTipTotal",
     "outputs": [
       {
         "internalType": "uint256",
@@ -451,6 +477,13 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "tip",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {

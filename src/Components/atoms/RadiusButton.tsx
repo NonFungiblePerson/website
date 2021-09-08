@@ -64,11 +64,14 @@ export function RadiusButton({
   const color = colors[kind];
   return (
     <chakra.button
+      _active={{
+        bg: 'nfpGreys.400',
+      }}
       _disabled={{
         bg: 'nfpGreys.200',
       }}
       _hover={{
-        boxShadow: 'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px',
+        boxShadow: 'rgba(17, 17, 26, 0.3) 0px 1px 0px, rgba(17, 17, 26, 0.3) 0px 0px 8px',
       }}
       alignItems="center"
       backgroundColor={color.bg}

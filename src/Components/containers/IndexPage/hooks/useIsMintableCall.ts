@@ -11,10 +11,9 @@ type Props = {
 export function useIsMintable({ contract, publicAddress, web3 }: Props) {
   const [isMintable, setIsMintable] = useState<boolean>(false);
   useEffect(() => {
-    const generateVec = contract.methods['isMintable']();
-    (generateVec.call({ from: publicAddress }) as Promise<boolean>)
+    const isMintableCall = contract.methods['isMintable']();
+    (isMintableCall.call({ from: publicAddress }) as Promise<boolean>)
       .then(ret => {
-        console.log(ret);
         setIsMintable(ret);
       })
       .catch(e => {

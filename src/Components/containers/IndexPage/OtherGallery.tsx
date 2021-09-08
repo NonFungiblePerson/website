@@ -1,4 +1,4 @@
-import { chakra, Box, Text, HStack } from '@chakra-ui/react';
+import { chakra } from '@chakra-ui/react';
 import React, { Dispatch, useEffect } from 'react';
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
@@ -6,8 +6,8 @@ import { Contract } from 'web3-eth-contract';
 import { Constants } from '../../../utils/constants';
 import { CenteredTitle } from '../../atoms/CenteredTitle';
 
-import { useBalanceOfCall } from './hooks/useBalanceOfCall';
-import { onChangeBalance } from './stores/actions';
+import { useGenerateVecCall } from './hooks/useGenerateVec';
+import { onOtherTokenFetched } from './stores/actions';
 import { Action } from './stores/reducer';
 import { State } from './stores/state';
 
@@ -18,23 +18,35 @@ type Props = {
   state: State;
   web3: Web3;
 };
-export const Gallery = ({ contract, dispatch, publicAddress, state, web3 }: Props) => {
-  const { call: balanceOfCall } = useBalanceOfCall({ contract, publicAddress, web3 });
+export const OtherGallery = ({
+  contract,
+  dispatch,
+  publicAddress,
+  state,
+  web3,
+}: Props) => {
+  const { call: generateVecCall } = useGenerateVecCall({ contract, publicAddress, web3 });
   useEffect(() => {
-    balanceOfCall({
-      onSuccess(ret) {
-        dispatch(onChangeBalance(Number(ret)));
-        console.log(ret);
-      },
+    Array.from({ length: 24 }).forEach((_, i) => {
+      const tokenId = state.latestTokenId - i;
+      if (tokenId < 30) {
+        return;
+      }
+      generateVecCall({
+        onSuccess(vec) {
+          dispatch(onOtherTokenFetched(tokenId, vec));
+        },
+        tokenId,
+      });
     });
   }, [publicAddress]);
   return (
     <>
-      {state.tokens.length !== 0 && (
+      {state.otherTokens.length !== 0 && (
         <chakra.div mb="6.4rem">
-          <CenteredTitle text="Your Collections" />
+          <CenteredTitle text="Gallery" />
           <chakra.div display="flex" flexWrap="wrap" justifyContent="center" w="100%">
-            {[...state.tokens].reverse().map(token => {
+            {[...state.otherTokens].reverse().map(token => {
               return (
                 <chakra.a
                   key={token.tokenId}
@@ -45,10 +57,10 @@ export const Gallery = ({ contract, dispatch, publicAddress, state, web3 }: Prop
                 >
                   <chakra.div
                     dangerouslySetInnerHTML={{ __html: token.svg }}
-                    h="200px"
+                    h="150px"
                     mb="20px"
                     mr="20px"
-                    w="200px"
+                    w="150px"
                   />
                 </chakra.a>
               );

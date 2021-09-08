@@ -1,10 +1,9 @@
-import { Box, chakra, HStack, Stack } from '@chakra-ui/react';
+import { Box, chakra, Stack } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { AfterMetamaskContainer } from '../Components/containers/IndexPage/AfterMetamask';
 import { BeforeMetamaskContainer } from '../Components/containers/IndexPage/BeforeMetamask';
-import { ComingSoon } from '../Components/containers/IndexPage/ComingSoon';
 import { useAddChain } from '../hooks/useAddChain';
 import { useNetworkSwitch } from '../hooks/useNetworkSwitch';
 import { useWeb3 } from '../hooks/useWeb3';
@@ -121,12 +120,12 @@ export default function Index() {
           {!isMetamaskApproved && (
             <BeforeMetamaskContainer requestMetamask={requestMetamask} />
           )}
-          {/*{isMetamaskApproved && web3 && publicAddress && (*/}
-          {/*  <AfterMetamaskContainer publicAddress={publicAddress} web3={web3} />*/}
-          {/*)}*/}
           {isMetamaskApproved && web3 && publicAddress && (
-            <ComingSoon publicAddress={publicAddress} web3={web3} />
+            <AfterMetamaskContainer publicAddress={publicAddress} web3={web3} />
           )}
+          {/*{isMetamaskApproved && web3 && publicAddress && (*/}
+          {/*  <ComingSoon publicAddress={publicAddress} web3={web3} />*/}
+          {/*)}*/}
         </chakra.div>
       </chakra.div>
       <chakra.section bg="#eee" padding="32px" w="100%">
@@ -151,11 +150,31 @@ export default function Index() {
       <chakra.section bg="#eee" padding="32px" w="100%">
         <chakra.div margin="0 auto" maxW="1400px">
           <chakra.h2 color="nfpGreys.400" fontSize="52px" fontWeight="bold" mb="32px">
+            OpenSea
+          </chakra.h2>
+          <chakra.article>
+            <chakra.p fontSize="14px" mb="20px" whiteSpace="unset" width="60%">
+              <chakra.a
+                color="blue"
+                fontSize="2rem"
+                href="https://example.com"
+                target="_blank"
+                textDecoration="underline"
+              >
+                View on OpenSea
+              </chakra.a>
+            </chakra.p>
+          </chakra.article>
+        </chakra.div>
+      </chakra.section>
+      <chakra.section bg="#eee" padding="32px" w="100%">
+        <chakra.div margin="0 auto" maxW="1400px">
+          <chakra.h2 color="nfpGreys.400" fontSize="52px" fontWeight="bold" mb="32px">
             Roadmap
           </chakra.h2>
           <chakra.article>
             <chakra.p fontSize="14px" mb="20px" whiteSpace="unset" width="60%">
-              Will be launched in Sept. 2021.
+              Launched on 9th Sept. 2021.
             </chakra.p>
           </chakra.article>
         </chakra.div>
@@ -167,25 +186,8 @@ export default function Index() {
           </chakra.h2>
           <chakra.article>
             <chakra.p fontSize="14px" mb="20px" whiteSpace="unset" width="60%">
-              The price of tokens are determined as follows:
+              Free. You can tip.
             </chakra.p>
-            <Box my="30px">
-              <chakra.img alt="price constraints" src="/images/prices.png" w="400px" />
-            </Box>
-            <chakra.p fontSize="14px" mb="20px" whiteSpace="unset" width="60%">
-              Tokens #0~#29 are reserved for the community.
-              <br />
-              Tokens #30~#49 can be minted for free (gas fee only).
-              <br />
-              Tokens for #50~#99 are 1MATIC.
-              <br />
-              The next 100 tokens are 5MATIC.
-              <br />
-              After that, the price will increase by 0.2MATIC.
-            </chakra.p>
-            <Box my="30px">
-              <chakra.img alt="price chart" src="/images/chart.svg" width="600px" />
-            </Box>
           </chakra.article>
         </chakra.div>
       </chakra.section>

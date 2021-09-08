@@ -1,5 +1,5 @@
 type Token = {
-  svg?: string;
+  svg: string;
   tokenId: number;
 };
 
@@ -8,7 +8,10 @@ export type State = {
   currentPrice: number;
   latestTokenId: number;
   mintedTokensCount: number;
+  otherTokens: Token[];
+  tipForm: number;
   tokens: Token[];
+  totalTip: number;
 };
 
 export const initState: State = {
@@ -16,5 +19,8 @@ export const initState: State = {
   currentPrice: 0,
   latestTokenId: 0,
   mintedTokensCount: 0,
+  otherTokens: [],
+  tipForm: 0,
   tokens: [],
+  totalTip: 0,
 };
