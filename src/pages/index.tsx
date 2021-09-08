@@ -157,7 +157,7 @@ export default function Index() {
               <chakra.a
                 color="blue"
                 fontSize="2rem"
-                href="https://example.com"
+                href="https://opensea.io/collection/non-fungible-person"
                 target="_blank"
                 textDecoration="underline"
               >
